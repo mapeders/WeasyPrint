@@ -539,6 +539,60 @@ def test_path_a7(assert_pixels):
 
 
 @assert_no_logs
+def test_path_a_zero_radius(assert_pixels):
+    assert_pixels('''
+        ____________
+        ____________
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        ____________
+        ____________
+    ''', '''
+      <style>
+        @page { size: 12px }
+        svg { display: block }
+      </style>
+      <svg width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 2 2 L 10 2 A 0 0 0 0 1 10 10 L 2 10 Z"
+          fill="blue"/>
+      </svg>
+    ''')
+
+
+@assert_no_logs
+def test_path_a_zero_radius_relative(assert_pixels):
+    assert_pixels('''
+        ____________
+        ____________
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        __BBBBBBBB__
+        ____________
+        ____________
+    ''', '''
+      <style>
+        @page { size: 12px }
+        svg { display: block }
+      </style>
+      <svg width="12px" height="12px" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 2 2 L 10 2 a 0 0 0 0 1 0 8 L 2 10 Z"
+          fill="blue"/>
+      </svg>
+    ''')
+
+
+@assert_no_logs
 def test_path_wrong_point(assert_pixels):
     assert_pixels('''
         ____________
